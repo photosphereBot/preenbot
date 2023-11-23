@@ -1,0 +1,5 @@
+# Supprimer tous les container stoppé
+sudo docker container rm $( sudo docker container ls -a -f "status=exited" -q)
+
+# supprimé tous les images pendante
+sudo docker rmi $(sudo docker images -f dangling=true -q)
