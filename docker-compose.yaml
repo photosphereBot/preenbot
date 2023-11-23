@@ -2,7 +2,7 @@ version: '3'
 services:
   menphis:
     build: .
-    container_name: PrennBot
+    container_name: PreenBot
     env_file:
       - ./src/.env
     restart: unless-stopped
