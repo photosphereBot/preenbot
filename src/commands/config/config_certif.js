@@ -33,12 +33,7 @@ module.exports = {
     const pool = pgpool();
     const channel = interaction.options.getChannel('channel')
 
-    try {
-      const queryText = `INSERT INTO guild (guild_id, channel_id) VALUES ($1, $2) ON CONFLICT (guild_id) DO NOTHING;`;
-      await pool.query(queryText, [interaction.guildId, channel.id]);
-    } catch (error) {
-      console.error('addChannel.js ' + error);
-    }
+
 
 
     const embed =[
@@ -118,12 +113,20 @@ module.exports = {
       );
 
 
-    await channel
+    const sentMessage = await channel
       .send({ embeds: embed,  components: [btn] })
       .catch((err) => {
         console.log(err);
         return;
       });
+      console.log(sentMessage.id);
+
+      try {
+        const queryText = `INSERT INTO guild (guild_id, channel_id, message_id) VALUES ($1, $2, $3) ON CONFLICT (guild_id) DO NOTHING;`;
+        await pool.query(queryText, [interaction.guildId, channel.id, sentMessage.id]);
+      } catch (error) {
+        console.error('addChannel.js ' + error);
+      }
     await interaction.reply({ content: `Votre systeme de certification à été configuré dans ${channel}`, ephemeral: true });
   }
 };
