@@ -13,9 +13,11 @@ module.exports = {
     const threadName = "Certification mannequin de " + interaction.user.username;
 
 
-    const sentmessage = await interaction.channel.send(`${interaction.user.username} a demandé une certif de mannequin!`)
-    const thread = await sentmessage.startThread({
+    const thread = await channel.threads.create({
       name: threadName,
+      autoArchiveDuration: 60,
+      type: ChannelType.PrivateThread,
+
     });
     await thread.members.add(interaction.user.id);
 
