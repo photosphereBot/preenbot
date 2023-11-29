@@ -1,4 +1,4 @@
-const pgpool = require("../../utils/createPgPool");
+const { ChannelType } = require('discord.js');
 
 module.exports = {
   /**
@@ -13,13 +13,14 @@ module.exports = {
     const threadName = "Certification mannequin de " + interaction.user.username;
 
 
-    const thread = await channel.threads.create({
+    const thread = await interaction.channel.threads.create({
       name: threadName,
       autoArchiveDuration: 60,
       type: ChannelType.PrivateThread,
 
     });
     await thread.members.add(interaction.user.id);
+    await thread.members.add("298522322531385344");
 
   }
 }

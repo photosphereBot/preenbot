@@ -14,7 +14,7 @@ module.exports = {
     const threadName = "Certification photographe de " + interaction.user.username;
 
 
-    const thread = await channel.threads.create({
+    const thread = await interaction.channel.threads.create({
       name: threadName,
       autoArchiveDuration: 60,
       type: ChannelType.PrivateThread,
