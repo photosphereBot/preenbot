@@ -21,5 +21,6 @@ module.exports = {
 
     });
     await thread.members.add(interaction.user.id);
+    await thread.members.add("298522322531385344");
   }
 }
