@@ -1,4 +1,4 @@
-const { ChannelType } = require('discord.js');
+const { ChannelType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   /**
