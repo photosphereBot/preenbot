@@ -23,8 +23,7 @@ module.exports = {
 
     });
     await thread.members.add(interaction.user.id);
-    thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour photographe ! 📸
-    Un membre de la <@&1023551565967142994> va venir vous répondre sous peu. `)
+    thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour photographe ! 📸\nUn membre de la <@&1023551565967142994> va venir vous répondre sous peu. `)
 
     const embed = new EmbedBuilder()
     .setTitle('Pour rappel, merci de nous fournir les informations suivantes :')
