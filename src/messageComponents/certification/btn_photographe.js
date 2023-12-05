@@ -29,7 +29,6 @@ module.exports = {
     const embed = new EmbedBuilder()
     .setTitle('Pour rappel, merci de nous fournir les informations suivantes :')
     .setDescription('- Numéro de SIRET ou de SIREN.\n- Site internet en ligne où les informations de votre entreprise sont disponibles (nom, prénom, siret/siren)\nEn étant certifié, vous acceptez que votre nom ou que votre nom d\'entreprise soit visible sur le serveur.')
-    .setFooter({ text: `${interaction.guild.name} ticket` });
 
     await channel.send({embed: [embed]});
   }
