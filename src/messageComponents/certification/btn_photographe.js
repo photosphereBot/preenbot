@@ -23,12 +23,12 @@ module.exports = {
 
     });
     await thread.members.add(interaction.user.id);
-    thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour photographe ! 📸\nUn membre de la <@&1023551565967142994> va venir vous répondre sous peu. `)
+    await thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour photographe ! 📸\nUn membre de la <@&1023551565967142994> va venir vous répondre sous peu. `)
 
     const embed = new EmbedBuilder()
     .setTitle('Pour rappel, merci de nous fournir les informations suivantes :')
     .setDescription('- Numéro de SIRET ou de SIREN.\n- Site internet en ligne où les informations de votre entreprise sont disponibles (nom, prénom, siret/siren)\nEn étant certifié, vous acceptez que votre nom ou que votre nom d\'entreprise soit visible sur le serveur.')
 
-    await thread.send({embed: [embed]});
+    await thread.send({embeds: [embed]});
   }
 }

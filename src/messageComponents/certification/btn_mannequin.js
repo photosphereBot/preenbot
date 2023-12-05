@@ -26,7 +26,7 @@ module.exports = {
     .setTitle('Pour rappel, merci de nous fournir les informations suivantes :')
     .setDescription('- Site internet de votre agence, là où les informations de votre représentation sont disponibles. (nom, prénom)\n- Coordonnées de l\'agence.\nEn étant certifié, vous acceptez que votre nom ou que votre nom d\'entreprise soit visible sur le serveur.')
 
-    await thread.send({embed: [embed]});
+    await thread.send({embeds: [embed]});
 
   }
 }
