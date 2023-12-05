@@ -13,10 +13,10 @@ module.exports = {
   callback: async (client, interaction) => {
     await interaction.deferReply();
     await interaction.deleteReply();
-    const threadName = "Certification photographe de " + interaction.user.username;
+    const threadName = "Photographe #1: " + interaction.user.username;
 
 
-    const thread = await channel.threads.create({
+    const thread = await interaction.channel.threads.create({
       name: threadName,
       autoArchiveDuration: 60,
       type: ChannelType.PrivateThread,
