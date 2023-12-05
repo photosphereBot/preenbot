@@ -20,14 +20,14 @@ module.exports = {
 
     });
     await thread.members.add(interaction.user.id);
-    channel.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour mannequin ! 💃 
+    thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour mannequin ! 💃 
     Un membre de la <@&1023551565967142994> va venir vous répondre sous peu.  `)
 
     const embed = new EmbedBuilder()
     .setTitle('Pour rappel, merci de nous fournir les informations suivantes :')
     .setDescription('- Site internet de votre agence, là où les informations de votre représentation sont disponibles. (nom, prénom)\n- Coordonnées de l\'agence.\nEn étant certifié, vous acceptez que votre nom ou que votre nom d\'entreprise soit visible sur le serveur.')
 
-    await channel.send({embed: [embed]});
+    await thread.send({embed: [embed]});
 
   }
 }
