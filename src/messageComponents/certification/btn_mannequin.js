@@ -20,7 +20,7 @@ module.exports = {
 
     });
     await thread.members.add(interaction.user.id);
-    thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour mannequin ! 💃 
+    await thread.send(`Bonjour <@${interaction.user.id}>, vous avez demandé l'obtention de la certification pour mannequin ! 💃 
     Un membre de la <@&1023551565967142994> va venir vous répondre sous peu.  `)
 
     const embed = new EmbedBuilder()
