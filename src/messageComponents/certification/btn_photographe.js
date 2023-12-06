@@ -13,7 +13,7 @@ module.exports = {
   callback: async (client, interaction) => {
     await interaction.deferReply();
     await interaction.deleteReply();
-    const threadName = "Photographe #1: " + interaction.user.username;
+    const threadName = "Photographe #1 : " + interaction.user.username;
 
 
     const thread = await interaction.channel.threads.create({
