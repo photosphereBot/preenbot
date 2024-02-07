@@ -4,7 +4,11 @@
   "description": "Incredible discord AI assistant",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development node src/index.js",
+    "preprod": "cross-env NODE_ENV=preproduction docker-compose -p preenbot -f docker/docker-compose.yaml up --build",
+    "prod": "cross-env NODE_ENV=production docker-compose -p preenbot -f docker/docker-compose.yaml up --build"
+
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "cross-env": "^7.0.3"
   }
 }

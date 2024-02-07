@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bot:
+    image: starlightcoder/preenbot:latest
+    container_name: preenbot
+    build:
+      context: ../
+      dockerfile: ./docker/dockerfile
+    env_file:
+      - ../config/env/.env.${NODE_ENV}
+    restart: unless-stopped
+    volumes:
+      - preenbot_logs:~/starlightcoder/logs:/usr/src/app/logs
+volumes:
+  preenbot_logs:
