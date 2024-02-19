@@ -1,17 +1,17 @@
-# Utiliser une image de base Node.js plus légère
-FROM node:20-alpine
+# syntax=docker/dockerfile:1
 
-# Définir le répertoire de travail dans le conteneur
+# Build stage
+FROM node:20-alpine AS builder
 WORKDIR /usr/src/app
+COPY package*.json .
+RUN npm install
+COPY . .
+RUN npm run build
 
-# Copier les fichiers package.json et package-lock.json
-COPY package*.json ./
-
-# Installer les dépendances et nettoyer le cache npm
-RUN npm install --production && npm cache clean --force
-
-# Copier uniquement les fichiers nécessaires
-COPY src/ src/
-
-# Commande pour démarrer l'application
-CMD ["node", "src/index.js"]
+# Production stage
+FROM node:20-alpine
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/package*.json ./
+RUN npm install --only=production && npm cache clean --force
+COPY --from=builder /usr/src/app/dist ./dist
+CMD ["node", "./dist/index.js"]

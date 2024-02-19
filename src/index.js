@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: `config/env/.env.development` });
 const { Client, IntentsBitField } = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
 /*
