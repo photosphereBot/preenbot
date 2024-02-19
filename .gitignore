@@ -23,7 +23,9 @@
 hs_err_pid*
 replay_pid*
 
-.env
+.env.production
+.env.development
+.env.preproduction
 package-lock.json
 node_modules/
 config.json
