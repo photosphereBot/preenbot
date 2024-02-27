@@ -1,8 +1,13 @@
-const path = require('path');
-const getAllFiles = require('./getAllFiles');
+import path from 'path';
+import getAllFiles from './getAllFiles';
 
-module.exports = (exceptions = ["variable.js"]) => {
-  let localCommands = [];
+interface Command {
+  name: string;
+  // Ajoutez d'autres propriétés de la commande ici selon vos besoins
+}
+
+const loadCommands = (exceptions: string[] = ["variable.js"]): Command[] => {
+  let localCommands: Command[] = [];
 
   const commandCategories = getAllFiles(
     path.join(__dirname, '..', 'commands'),
@@ -13,7 +18,7 @@ module.exports = (exceptions = ["variable.js"]) => {
     const commandFiles = getAllFiles(commandCategory);
 
     for (const commandFile of commandFiles) {
-      const commandObject = require(commandFile);
+      const commandObject: Command = require(commandFile);
 
       if (exceptions.includes(commandObject.name)) {
         console.log('hello');
@@ -26,3 +31,5 @@ module.exports = (exceptions = ["variable.js"]) => {
 
   return localCommands;
 };
+
+export default loadCommands;

@@ -1,5 +1,29 @@
-module.exports = (existingCommand, localCommand) => {
-  const areChoicesDifferent = (existingChoices, localChoices) => {
+type Choice = {
+  name: string;
+  value: string;
+};
+
+type Option = {
+  name: string;
+  description: string;
+  type: string;
+  required?: boolean;
+  choices?: Choice[];
+};
+
+type Command = {
+  description: string;
+  options?: Option[];
+};
+
+const commandDifferences = (
+  existingCommand: Command,
+  localCommand: Command
+): boolean => {
+  const areChoicesDifferent = (
+    existingChoices: Choice[] | undefined,
+    localChoices: Choice[]
+  ): boolean => {
     for (const localChoice of localChoices) {
       const existingChoice = existingChoices?.find(
         (choice) => choice.name === localChoice.name
@@ -16,7 +40,10 @@ module.exports = (existingCommand, localCommand) => {
     return false;
   };
 
-  const areOptionsDifferent = (existingOptions, localOptions) => {
+  const areOptionsDifferent = (
+    existingOptions: Option[] | undefined,
+    localOptions: Option[]
+  ): boolean => {
     for (const localOption of localOptions) {
       const existingOption = existingOptions?.find(
         (option) => option.name === localOption.name
@@ -53,3 +80,5 @@ module.exports = (existingCommand, localCommand) => {
 
   return false;
 };
+
+export default commandDifferences;
