@@ -1,13 +1,14 @@
 import path from 'path';
 import getAllFiles from './getAllFiles';
+import { LocalCommand } from 'src/types/commandsTypes';
 
 interface Command {
   name: string;
   // Ajoutez d'autres propriétés de la commande ici selon vos besoins
 }
 
-const loadCommands = (exceptions: string[] = ["variable.js"]): Command[] => {
-  let localCommands: Command[] = [];
+const loadCommands = (exceptions: string[] = ["variable.js"]): LocalCommand[] => {
+  let localCommands: LocalCommand[] = [];
 
   const commandCategories = getAllFiles(
     path.join(__dirname, '..', 'commands'),
@@ -18,7 +19,7 @@ const loadCommands = (exceptions: string[] = ["variable.js"]): Command[] => {
     const commandFiles = getAllFiles(commandCategory);
 
     for (const commandFile of commandFiles) {
-      const commandObject: Command = require(commandFile);
+      const commandObject: LocalCommand = require(commandFile);
 
       if (exceptions.includes(commandObject.name)) {
         console.log('hello');

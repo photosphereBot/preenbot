@@ -1,3 +1,5 @@
+import { ApplicationCommand } from "discord.js";
+
 type Choice = {
   name: string;
   value: string;
@@ -17,7 +19,7 @@ type Command = {
 };
 
 const commandDifferences = (
-  existingCommand: Command,
+  existingCommand: ApplicationCommand,
   localCommand: Command
 ): boolean => {
   const areChoicesDifferent = (
@@ -73,7 +75,7 @@ const commandDifferences = (
   if (
     existingCommand.description !== localCommand.description ||
     existingCommand.options?.length !== (localCommand.options?.length || 0) ||
-    areOptionsDifferent(existingCommand.options, localCommand.options || [])
+    areOptionsDifferent(existingCommand.options as Option[], localCommand.options || [])
   ) {
     return true;
   }

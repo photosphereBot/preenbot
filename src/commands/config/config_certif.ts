@@ -1,11 +1,9 @@
 import {
   Client,
   CommandInteraction,
-  EmbedBuilder,
   ActionRowBuilder,
   ButtonBuilder,
   ApplicationCommandOptionType,
-  PermissionFlagsBits,
   CommandInteractionOptionResolver,
   TextChannel,
   NewsChannel,

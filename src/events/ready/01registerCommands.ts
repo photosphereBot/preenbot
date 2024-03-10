@@ -2,7 +2,7 @@ import { Client, Guild, ApplicationCommandData, ApplicationCommand } from 'disco
 import areCommandsDifferent from '../../utils/areCommandsDifferent';
 import getApplicationCommands from '../../utils/getApplicationCommands';
 import getLocalCommands from '../../utils/getLocalCommands';
-import { LocalCommand } from '../../types'; // Assumption: You have a type definition for LocalCommand
+import { LocalCommand } from '../../types/commandsTypes'; // Assumption: You have a type definition for LocalCommand
 
 module.exports = async (client: Client): Promise<void> => {
   try {

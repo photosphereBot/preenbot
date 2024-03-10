@@ -1,7 +1,8 @@
-import { Client, ChatInputCommandInteraction } from 'discord.js';
+import { Client, ChatInputCommandInteraction, APIInteractionGuildMember, PermissionsBitField } from 'discord.js';
 import { devs, testServer } from '../../../config.json';
 import getLocalCommands from '../../utils/getLocalCommands';
-import { LocalCommand } from '../../types'; // Assumption: You have a type definition for LocalCommand
+import { LocalCommand } from '../../types/commandsTypes';
+
 
 module.exports = async (client: Client, interaction: ChatInputCommandInteraction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;
@@ -16,7 +17,7 @@ module.exports = async (client: Client, interaction: ChatInputCommandInteraction
     if (!commandObject) return;
 
     if (commandObject.devOnly) {
-      if (!devs.includes(interaction.member?.id)) {
+      if (!devs.includes((interaction.member as APIInteractionGuildMember).user.id)) {
         interaction.reply({
           content: 'Only developers are allowed to run this command.',
           ephemeral: true,
@@ -37,7 +38,7 @@ module.exports = async (client: Client, interaction: ChatInputCommandInteraction
 
     if (commandObject.permissionsRequired?.length) {
       for (const permission of commandObject.permissionsRequired) {
-        if (!interaction.member?.permissions.has(permission)) {
+        if (!(interaction.member?.permissions as PermissionsBitField).has(permission)) {
           interaction.reply({
             content: 'Not enough permissions.',
             ephemeral: true,
