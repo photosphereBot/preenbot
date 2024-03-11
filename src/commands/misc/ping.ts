@@ -20,7 +20,7 @@ const pingCommand: Command = {
     const ping = reply.createdTimestamp - interaction.createdTimestamp;
 
     interaction.editReply(
-      `Pong! Client ${ping}ms | Websocket: ${client.ws.ping}ms`
+      `Hello ! My name is Preenbot and I have been migrated to typescript. \nPong! Client ${ping}ms | Websocket: ${client.ws.ping}ms`
     );
   },
 };

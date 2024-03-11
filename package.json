@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development node src/index.js",
-    "preprod": "cross-env NODE_ENV=preproduction docker-compose -p preenbot -f docker/docker-compose.yaml up --build",
-    "prod": "cross-env NODE_ENV=production docker-compose -p preenbot -f docker/docker-compose.yaml up --build"
+    "build": "tsc",
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts ",
+    "prod": "cross-env NODE_ENV=production nodemon --exec ts-node src/index.ts",
+    "preprod": "cross-env NODE_ENV=preproduction docker-compose -p menphis_mbe_auth -f docker/docker-compose.yaml up --build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   "homepage": "https://github.com/wardrockay/Menphis#readme",
   "dependencies": {
     "cross-env": "^7.0.3",
-    "discord.js": "^14.7.1",
+    "discord.js": "^14.14.1",
     "dotenv": "^16.0.3",
     "pg": "^8.11.3"
   },

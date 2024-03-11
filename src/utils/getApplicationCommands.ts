@@ -1,6 +1,6 @@
-import { Client, GuildCommandManager } from 'discord.js';
+import { Client, GuildApplicationCommandManager } from 'discord.js';
 
-const fetchApplicationCommands = async (client: Client, guildId?: string): Promise<GuildCommandManager> => {
+const fetchApplicationCommands = async (client: Client, guildId?: string): Promise<GuildApplicationCommandManager> => {
   let applicationCommands;
 
   if (guildId) {
@@ -14,8 +14,8 @@ const fetchApplicationCommands = async (client: Client, guildId?: string): Promi
     throw new Error('Application commands not found');
   }
 
-  await applicationCommands.fetch();
-  return applicationCommands;
+  await applicationCommands.fetch({});
+  return applicationCommands as GuildApplicationCommandManager;
 };
 
 export default fetchApplicationCommands;

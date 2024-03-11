@@ -15,7 +15,8 @@ export const loadEventHandlers = (client: Client): void => {
 
     client.on(eventName, async (...args: any[]) => {
       for (const eventFile of eventFiles) {
-        const eventFunction: EventFunction = require(eventFile).default;
+        console.log(`Loading event: ${eventFile}`);
+        const eventFunction: EventFunction = require(eventFile);
         await eventFunction(client, ...args);
       }
     });

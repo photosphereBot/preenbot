@@ -1,9 +1,6 @@
-import dotenv from 'dotenv';
 import { Client, IntentsBitField } from 'discord.js';
-import eventHandler from './handlers/eventHandler';
-
-// Initialize dotenv
-dotenv.config({ path: `config/env/.env.development` });
+import { loadEventHandlers } from './handlers/eventHandler';
+import { DISCORD_CLIENT_SECRET } from './utils/environment';
 
 // Create a new Discord client instance
 const client = new Client({
@@ -17,7 +14,7 @@ const client = new Client({
 });
 
 // Use the event handler
-eventHandler(client);
+loadEventHandlers(client);
 
 // Login to Discord with your app's token
-client.login(process.env.DISCORD_TOKEN);
+client.login(DISCORD_CLIENT_SECRET);
