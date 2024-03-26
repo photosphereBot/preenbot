@@ -1,6 +1,7 @@
 import path from 'path';
-import getAllFiles from '../utils/getAllFiles';
+import fs from 'fs';
 import { Client } from 'discord.js';
+import getAllFiles from '../utils/getAllFiles';
 
 type EventFunction = (client: Client, ...args: any[]) => Promise<void>;
 
@@ -15,9 +16,13 @@ export const loadEventHandlers = (client: Client): void => {
 
     client.on(eventName, async (...args: any[]) => {
       for (const eventFile of eventFiles) {
-        console.log(`Loading event: ${eventFile}`);
-        const eventFunction: EventFunction = require(eventFile);
-        await eventFunction(client, ...args);
+        const importedModule = require(eventFile);
+        if (typeof importedModule.default === 'function') {
+          const eventFunction: EventFunction = importedModule.default;
+          await eventFunction(client, ...args);
+        } else {
+          console.error(`Le fichier ${eventFile} n'exporte pas une fonction par défaut.`);
+        }
       }
     });
   }

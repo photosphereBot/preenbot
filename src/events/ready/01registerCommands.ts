@@ -4,7 +4,7 @@ import getApplicationCommands from '../../utils/getApplicationCommands';
 import getLocalCommands from '../../utils/getLocalCommands';
 import { LocalCommand } from '../../types/commandsTypes'; // Assumption: You have a type definition for LocalCommand
 
-module.exports = async (client: Client): Promise<void> => {
+export default async (client: Client): Promise<void> => {
   try {
     const Guilds: string[] = client.guilds.cache.map((guild: Guild) => guild.id);
     for (const GuildId of Guilds) {

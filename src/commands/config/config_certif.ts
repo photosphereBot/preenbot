@@ -10,7 +10,7 @@ import {
   DMChannel
 } from 'discord.js';
 import { Pool } from 'pg'; // Assuming pg is used for PostgreSQL connection
-import createPgPool from '../../utils/createPgPool.js'; // Make sure this function is properly typed in its own file
+import createPgPool from '../../utils/createPgPool'; // Make sure this function is properly typed in its own file
 
 interface Command {
   name: string;
