@@ -19,7 +19,11 @@ const loadCommands = (exceptions: string[] = ["variable.js"]): LocalCommand[] =>
     const commandFiles = getAllFiles(commandCategory);
 
     for (const commandFile of commandFiles) {
-      const commandObject: LocalCommand = require(commandFile);
+      let commandObject: LocalCommand = require(commandFile);
+
+      if (commandObject.default) {
+        commandObject = commandObject.default;
+      }
 
       if (exceptions.includes(commandObject.name)) {
         console.log('hello');
@@ -33,4 +37,5 @@ const loadCommands = (exceptions: string[] = ["variable.js"]): LocalCommand[] =>
   return localCommands;
 };
 
-export default loadCommands;
+module.exports = { loadCommands };
+

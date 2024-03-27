@@ -2,7 +2,7 @@ import { Client, ModalSubmitInteraction } from 'discord.js';
 import getModals from '../../utils/getModals';
 import { Modal } from '../../types/ModalTypes'; // Assumption: You have a type definition for Modal
 
-module.exports = async (client: Client, interaction: ModalSubmitInteraction): Promise<void> => {
+export default async (client: Client, interaction: ModalSubmitInteraction): Promise<void> => {
   if (!interaction.isModalSubmit()) return;
 
   const modals: Modal[] = getModals() as Modal[];

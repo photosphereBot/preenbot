@@ -3,6 +3,7 @@ import { Client, CommandInteraction, PermissionResolvable } from "discord.js";
 export type CommandCallback = (client: Client, interaction: CommandInteraction) => void;
 
 export type LocalCommand = {
+  default: any;
   name: string; // The name of the command
   description: string; // The description of the command
   deleted?: boolean; // Whether the command is deleted

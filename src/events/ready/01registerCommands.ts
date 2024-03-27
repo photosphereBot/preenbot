@@ -1,14 +1,14 @@
 import { Client, Guild, ApplicationCommandData, ApplicationCommand } from 'discord.js';
 import areCommandsDifferent from '../../utils/areCommandsDifferent';
 import getApplicationCommands from '../../utils/getApplicationCommands';
-import getLocalCommands from '../../utils/getLocalCommands';
+const { loadCommands} = require('../../utils/getLocalCommands');
 import { LocalCommand } from '../../types/commandsTypes'; // Assumption: You have a type definition for LocalCommand
 
 export default async (client: Client): Promise<void> => {
   try {
     const Guilds: string[] = client.guilds.cache.map((guild: Guild) => guild.id);
     for (const GuildId of Guilds) {
-      const localCommands: LocalCommand[] = getLocalCommands();
+      const localCommands: LocalCommand[] = loadCommands();
       const applicationCommands = await getApplicationCommands(client, GuildId);
 
       for (const localCommand of localCommands) {

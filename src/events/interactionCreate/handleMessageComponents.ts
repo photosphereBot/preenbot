@@ -8,7 +8,7 @@ import {MessageComponent} from '../../types/MessageComponentTypes';
  * @param interaction - The interaction that triggered the command
  */
 
-module.exports = async (client: Client, interaction: MessageComponentInteraction): Promise<void> => {
+export default async (client: Client, interaction: MessageComponentInteraction): Promise<void> => {
   if (!interaction.isMessageComponent()) return;
 
   const MessageComponents: MessageComponent[] = getMessageComponents() as MessageComponent[];

@@ -1,13 +1,19 @@
 import { Client, ChatInputCommandInteraction, APIInteractionGuildMember, PermissionsBitField } from 'discord.js';
 import { devs, testServer } from '../../../config.json';
-import getLocalCommands from '../../utils/getLocalCommands';
+const { loadCommands} = require('../../utils/getLocalCommands');
 import { LocalCommand } from '../../types/commandsTypes';
 
 
-module.exports = async (client: Client, interaction: ChatInputCommandInteraction): Promise<void> => {
+export default async (client: Client, interaction: ChatInputCommandInteraction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;
 
-  const localCommands: LocalCommand[] = getLocalCommands();
+  //console.log(interaction);
+
+  const localCommands: LocalCommand[] = loadCommands();
+
+  console.log(localCommands);
+  console.log(localCommands.map((cmd) => cmd.name));
+
 
   try {
     const commandObject: LocalCommand | undefined = localCommands.find(
