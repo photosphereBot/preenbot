@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts ",
     "prod": "cross-env NODE_ENV=production nodemon --exec ts-node src/index.ts",
-    "preprod": "cross-env NODE_ENV=preproduction docker-compose -p menphis_mbe_auth -f docker/docker-compose.yaml up --build"
+    "preprod": "cross-env NODE_ENV=preproduction docker-compose -p preenbot -f docker/docker-compose.yaml up --build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.20",
-    "@types/pg": "^8.11.2"
+    "@types/pg": "^8.11.2",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2"
   }
 }

@@ -9,7 +9,7 @@ services:
     env_file:
       - ../config/env/.env.${NODE_ENV}
     restart: unless-stopped
-    volumes:
-      - preenbot_logs:~/starlightcoder/logs:/usr/src/app/logs
-volumes:
-  preenbot_logs:
+   # volumes:
+      #- preenbot_logs:~/starlightcoder/logs:/usr/src/app/logs
+#volumes:
+ # preenbot_logs:
