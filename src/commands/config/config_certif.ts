@@ -118,8 +118,13 @@ const certifSetup: Command = {
         if (sentMessage) {
             console.log(sentMessage.id);
     
-            const queryText = `INSERT INTO guild (guild_id, channel_id, message_id) VALUES ($1, $2, $3) ON CONFLICT (guild_id) DO NOTHING;`;
-            await pool.query(queryText, [interaction.guildId, channel.id, sentMessage.id]);
+            if (interaction.guildId && channel.id && sentMessage.id) {
+              const queryText = `INSERT INTO guild (guild_id, channel_id, message_id) VALUES ($1, $2, $3) ON CONFLICT (guild_id) DO NOTHING;`;
+              await pool.query(queryText, [interaction.guildId, channel.id, sentMessage.id]);
+          } else {
+              console.log("One of the IDs is null or undefined.");
+          }
+          
         }
     } catch (error) {
         console.error('addChannel.js ' + error);
