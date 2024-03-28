@@ -2,10 +2,6 @@ import path from 'path';
 import getAllFiles from './getAllFiles';
 import { LocalCommand } from 'src/types/commandsTypes';
 
-interface Command {
-  name: string;
-  // Ajoutez d'autres propriétés de la commande ici selon vos besoins
-}
 
 const loadCommands = (exceptions: string[] = ["variable.js"]): LocalCommand[] => {
   let localCommands: LocalCommand[] = [];

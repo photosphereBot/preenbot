@@ -7,8 +7,6 @@ import { LocalCommand } from '../../types/commandsTypes';
 export default async (client: Client, interaction: ChatInputCommandInteraction): Promise<void> => {
   if (!interaction.isChatInputCommand()) return;
 
-  //console.log(interaction);
-
   const localCommands: LocalCommand[] = loadCommands();
 
   console.log(localCommands);
