@@ -24,7 +24,8 @@
         "src/index.ts"
     ],
     "include": [
-        "./**/*.ts"
+        "./**/*.ts",
+        "./**/*.json"
     ],
     "exclude": [
         "node_modules",

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts ",
-    "prod": "cross-env NODE_ENV=production nodemon --exec ts-node src/index.ts",
+    "production": "cross-env NODE_ENV=production docker-compose -p preenbot -f docker/docker-compose.yaml up --build",
     "preprod": "cross-env NODE_ENV=preproduction docker-compose -p preenbot -f docker/docker-compose.yaml up --build"
   },
   "repository": {
