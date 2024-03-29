@@ -24,9 +24,12 @@ const citationCommand: Command = {
     // Sélection aléatoire d'une blague
     const randomcitation = citations[Math.floor(Math.random() * citations.length)];
 
+    //formatage de la citation
+    const citationsformated: string = "> " + randomcitation.title
+
     const embed = [
       {
-        "title": randomcitation.title,
+        "title": citationsformated,
         "description": randomcitation.description,
         "color": 0xffffff,
       }
