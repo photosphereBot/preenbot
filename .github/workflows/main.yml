@@ -1,0 +1,27 @@
+name: Deploy PreenBot
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  nodejs_build:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: ['20']
+    steps:
+      - name: install ssh keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: Extract repo name
+        id: repo_name
+        run: echo "REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f 2)" >> $GITHUB_ENV
+      - name: connect and pull
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git switch ${{ secrets.MAIN_BRANCH }} && git pull && NODE_ENV=production docker compose -p ${{ env.REPO_NAME }} -f docker/docker-compose.yaml up --build -d && exit"
+      - name: cleanup
+        run: rm -rf ~/.ssh
