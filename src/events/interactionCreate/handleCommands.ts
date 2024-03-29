@@ -9,10 +9,6 @@ export default async (client: Client, interaction: ChatInputCommandInteraction):
 
   const localCommands: LocalCommand[] = loadCommands();
 
-  console.log(localCommands);
-  console.log(localCommands.map((cmd) => cmd.name));
-
-
   try {
     const commandObject: LocalCommand | undefined = localCommands.find(
       (cmd: LocalCommand) => cmd.name === interaction.commandName
