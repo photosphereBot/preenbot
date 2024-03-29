@@ -24,8 +24,16 @@ const jokeCommand: Command = {
     // Sélection aléatoire d'une blague
     const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
+    const embed = [
+      {
+        "title": randomJoke,
+        "description": "",
+        "color": 0xd4cb40
+      }
+    ]    
+
     // Envoie la blague sélectionnée
-    await interaction.editReply(randomJoke);
+    await interaction.editReply({embeds: embed});
   },
 };
 
